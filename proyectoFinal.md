@@ -26,6 +26,7 @@ El objetivo de esta base de datos columnar es poder facilitar la lectura, la vis
 #### Codigo para ingresar datos a monetdb
 
 #+begin_src shell
+
 docker exec monetdb monetdb create -p monetdb nba
 docker exec -it monetdb  mclient -u monetdb -d nba
 
