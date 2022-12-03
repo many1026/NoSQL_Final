@@ -1,4 +1,4 @@
-id,first_name,last_name,team/id,team/city,team/division,team/full_name
+id,firstName,lastName,teamId,teamCity,teamDivision,teamFullName
 14,Ike,Anigbogu,12,Indiana,Central,Indiana Pacers
 25,Ron,Baker,20,New York,Atlantic,New York Knicks
 47,Jabari,Bird,2,Boston,Atlantic,Boston Celtics
