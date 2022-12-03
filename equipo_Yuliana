@@ -1,0 +1,11 @@
+import requests
+import pymongo
+
+my_client = pymongo.MongoClient("mongodb://localhost:27017/")
+my_db = my_client["star"]
+collection = my_db["star"]
+response = []
+response.append(requests.get(url="http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline", headers={'User-Agent':'Custom'}))
+response[0] = response[0].json()
+print(response[0])
+collection.insert_many(response[0])
