@@ -1,4 +1,4 @@
-id,team/id,team/city,team/division,team/full_name
+id,teamId,teamCity,teamDivision,teamFullName
 14,12,Indiana,Central,Indiana Pacers
 25,20,New York,Atlantic,New York Knicks
 47,2,Boston,Atlantic,Boston Celtics
