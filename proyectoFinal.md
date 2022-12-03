@@ -6,6 +6,19 @@ Explicacion
 
 #### Codigo
 
+```python
+import requests
+import pymongo
+
+my_client = pymongo.MongoClient("mongodb://localhost:27017/")
+my_db = my_client["count"]
+collection = my_db["count"]
+response = []
+response.append(requests.get(url="https://restcountries.com/v3.1/all", headers={'User-Agent':'Custom'}))
+response[0] = response[0].json()
+print(response[0])
+collection.insert_many(response[0])
+```
 
 ### Importacion a Mongodb
 
@@ -25,8 +38,7 @@ El objetivo de esta base de datos columnar es poder facilitar la lectura, la vis
 
 #### Codigo para ingresar datos a monetdb
 
-#+begin_src shell
-
+```
 docker exec monetdb monetdb create -p monetdb nba
 docker exec -it monetdb  mclient -u monetdb -d nba
 
@@ -34,21 +46,10 @@ CREATE TABLE nba (ID varchar(80), firstName varchar(80), lastName varchar(80), t
 CREATE TABLE teams (ID varchar(80), teamId varchar(80), teamCity varchar(80), teamDivison varchar(80), teamFullName varchar(80));
 CREATE TABLE cities (firstName varchar(80), lastName varchar(80), teamCity varchar(80));
 
-
 COPY OFFSET 2 INTO nba from '/RUTAALARCHIVO/team.csv' on client using delimiters ',', E'\n', '';
 COPY OFFSET 2 INTO teams from '/RUTAALARCHIVO/team.csv' on client using delimiters ',', E'\n', '';
 COPY OFFSET 2 INTO cities from '/RUTAALARCHIVO/team.csv' on client using delimiters ',', E'\n', '';
-#+end_src
-
-#### Una vez dentro de mongodb, usamos el siguiente bloque de codigo para comprobar que los datos se mandaron
-
-#+begin_src shell
-mongo
-use monetdb
-show collections
-db.nba.find()
-#+end_src
-
+```
 
 ### Importacion a Base de Datos Grafica
 
