@@ -60,13 +60,18 @@ COPY OFFSET 2 INTO cities from '/RUTAALARCHIVO/team.csv' on client using delimit
 #### Queries
 
 ¿Cual es el porcentaje de jugadores por equipo?
-
-
+```SQL
+a
+```
 ¿Cual es el apellido mas comun?
-
+```SQL
+a
+```
 
 ¿Cual es la ciudad con mayor numero de jugadores?
-
+```SQL
+a
+```
 
 ## Neo4j
 
@@ -79,10 +84,10 @@ Explicacion
 
 #### Codigo 
 
-### Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
+## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
 
 PURA EXPLICACION
 
-### Conclusion
+## Conclusion
 
 PURA EXPLICACION
