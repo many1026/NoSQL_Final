@@ -49,18 +49,33 @@ COPY OFFSET 2 INTO cities from '/RUTAALARCHIVO/team.csv' on client using delimit
 ```
 #### Queries
 
-¿Cual es el porcentaje de jugadores por equipo?
+¿Cual es el porcentaje de jugadores por division?
+
 ```SQL
-a
+WITH t1 AS 
+ (SELECT teamDivision,count(*) AS number 
+  FROM nba
+  GROUP BY teamDivision)
+SELECT teamDivision, number, 
+       (0.0+number)/(COUNT(*) OVER (PARTITION BY teamDivision)) -- 0.0+ es para no hacer division integer
+FROM t1;
 ```
+
 ¿Cual es el apellido mas comun?
 ```SQL
-a
+SELECT lastName, count(*) as number
+  FROM nba
+  GROUP BY lastName
+  LIMIT 1;
 ```
 
 ¿Cual es la ciudad con mayor numero de jugadores?
+
 ```SQL
-a
+SELECT teamCity, count(*) as number
+  FROM cities
+  GROUP BY teamCity
+  LIMIT 1;
 ```
 
 ## Neo4j
