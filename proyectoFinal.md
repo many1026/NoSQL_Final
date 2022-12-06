@@ -20,11 +20,16 @@ print(response[0])
 collection.insert_many(response[0])
 ```
 
-### Importacion a Mongodb
+## Mongodb
+
+
+##### Importacion
 
 Explicacion
 
 #### Codigo
+
+#### Queries
 
 ### Transformacion a csv
 
@@ -32,11 +37,13 @@ Explicacion
 
 #### Codigo
 
-### Importacion a monetdb
+## monetdb
 #### Objetivo Base Columnar
 El objetivo de esta base de datos columnar es poder facilitar la lectura, la vista, y búsqueda de la información que creímos más pertinente de la API que descargamos. Nosotros escogimos la API de los jugadores de la NBA. Sucesivamente, escogimos ciertos atributos cómo el ID del jugador, su nombre completo, el ID del equipo, el nombre del equipo, la conferencia en la que juegan, la división, y la ciudad. La razón es porque queremos mostrar en la BigTable una visualización sencilla para poder encontrar la información básica del jugador y que visualmente alguien que no sepa nada, pueda encontrar muy fácilmente las especificaciones más importantes del jugador. Finalmente, para lograrlo se tuvo que exportar toda la información a monetdb  usando csv con los comandos:
 
-#### Codigo para ingresar datos a monetdb
+#### Importacion
+
+#### Codigo de Importacion
 
 ```
 docker exec monetdb monetdb create -p monetdb nba
@@ -50,12 +57,27 @@ COPY OFFSET 2 INTO nba from '/RUTAALARCHIVO/team.csv' on client using delimiters
 COPY OFFSET 2 INTO teams from '/RUTAALARCHIVO/team.csv' on client using delimiters ',', E'\n', '';
 COPY OFFSET 2 INTO cities from '/RUTAALARCHIVO/team.csv' on client using delimiters ',', E'\n', '';
 ```
+#### Queries
 
-### Importacion a Base de Datos Grafica
+¿Cual es el porcentaje de jugadores por equipo?
+
+
+¿Cual es el apellido mas comun?
+
+
+¿Cual es la ciudad con mayor numero de jugadores?
+
+
+## Neo4j
 
 Explicacion
 
 #### Codigo
+
+
+###
+
+#### Codigo 
 
 ### Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
 
