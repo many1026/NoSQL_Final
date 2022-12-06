@@ -1,10 +1,8 @@
 # Proyecto Final
 
+## API
+
 ### Extraccion del API
-
-Explicacion
-
-#### Codigo
 
 ```python
 import requests
@@ -22,18 +20,12 @@ collection.insert_many(response[0])
 
 ## Mongodb
 
-
-##### Importacion
-
-Explicacion
-
-#### Codigo
+#### Importacion desde API
 
 #### Queries
 
-### Transformacion a csv
+#### Transformacion a csv
 
-Explicacion
 
 #### Codigo
 
@@ -42,8 +34,6 @@ Explicacion
 El objetivo de esta base de datos columnar es poder facilitar la lectura, la vista, y búsqueda de la información que creímos más pertinente de la API que descargamos. Nosotros escogimos la API de los jugadores de la NBA. Sucesivamente, escogimos ciertos atributos cómo el ID del jugador, su nombre completo, el ID del equipo, el nombre del equipo, la conferencia en la que juegan, la división, y la ciudad. La razón es porque queremos mostrar en la BigTable una visualización sencilla para poder encontrar la información básica del jugador y que visualmente alguien que no sepa nada, pueda encontrar muy fácilmente las especificaciones más importantes del jugador. Finalmente, para lograrlo se tuvo que exportar toda la información a monetdb  usando csv con los comandos:
 
 #### Importacion
-
-#### Codigo de Importacion
 
 ```
 docker exec monetdb monetdb create -p monetdb nba
@@ -77,12 +67,11 @@ a
 
 Explicacion
 
-#### Codigo
+#### Importacion
 
 
-###
+### Queries
 
-#### Codigo 
 
 ## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
 
