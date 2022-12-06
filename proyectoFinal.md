@@ -80,12 +80,13 @@ SELECT teamCity, count(*) as number
 
 ## Neo4j
 
-Explicacion
-
 #### Importacion
 
+```SQL
 
-### Queries
+```
+
+#### Queries
 
 
 ## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
