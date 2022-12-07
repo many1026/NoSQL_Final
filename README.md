@@ -115,7 +115,12 @@ match (t:Team), (c:City) where t.city=c.city create (t)-[:Home_Is]->(c)
 ```
 
 #### Queries
-
+```SQL
+```
+```SQL
+```
+```SQL
+```
 
 ## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
 
