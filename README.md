@@ -23,19 +23,8 @@ Al recibir los datos desde la api, nos dimos cuenta que, todos los datos estaban
 
 
 #### Queries
-Regresa los nombres de los jugadores que su nombre termina con 'ael'
-```
-db.nba.find({"data.first_name":/ael$/},{"data.data":1,"data.first_name":1})
-```
-Regresa los nombres de los equipos que son parte de la conferencia sureste
 
-```
-db.nba.find({"data.team.division": {$in:["Southeast"]}},{"data.data":1,"data.team.full_name":1})
-```
-Regresa los nombres y id de los jugadores que juegan en la posición PointGuard o que juegan en la conferencia Este
-```
-db.nba.find({$or:[{"data.position":"G"},{$and:[{"data.conference":{$ne:["East"]}}]}]},{"data.first_name":1, "data.id":1})
-```
+
 ## monetdb
 #### Objetivo Base Columnar
 El objetivo de esta base de datos columnar es poder facilitar la lectura, la vista, y búsqueda de la información que creímos más pertinente de la API que descargamos. Nosotros escogimos la API de los jugadores de la NBA. Sucesivamente, escogimos ciertos atributos cómo el ID del jugador, su nombre completo, el ID del equipo, el nombre del equipo, la conferencia en la que juegan, la división, y la ciudad. La razón es porque queremos mostrar en la BigTable una visualización sencilla para poder encontrar la información básica del jugador y que visualmente alguien que no sepa nada, pueda encontrar muy fácilmente las especificaciones más importantes del jugador. Finalmente, para lograrlo se tuvo que exportar toda la información a monetdb  usando csv con los comandos:
@@ -141,6 +130,12 @@ ORDER BY n DESC
 ```
 
 
-## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
+## Comparacion entre Columnar (monetdb), Grafica (neo4j) y de Documentos (mongodb)
 
 La diferencia entre monetdb y neo4j almacenan bases de datos radica en la forma en la que almacenan los datos. Las bases de datos columnares guardan los datos en columnas relacionadas, mientras que en las bases de datos graficas los datos se almacenan en nodos y aristas, que representan las entidades y relaciones de la base de datos. Esto significa que las bases de datos columnares sirven para datos que son almacenados en columnas, como hojas de calculo, mientras que las bases de datos graficas sirven para datos cuyas relaciones son de extrema importancia, como las redes.
+
+Asi, se puede ver que el proposito de ambas. Por un lado, las bases de datos columnares permiten la busqueda eficiente de datos dentro de una misma columna, en lugar de buscar en toda la base de datos, haciendo que sea la mejor opcion para analiticas donde se tenga un gran numero de datos; por otro lado, las bases de datos graficas permiten representar y buscar de manera eficiente las relaciones complejas y de gran numero, como cadenas de suministros, algo que no es posible hacer en una columnar, con su tendencia a tener datos duplicados.
+
+Completamente aparte estan las bases de datos basadas en Documentos, que son ideales para datos que no tengan una estructura definida, o datos que contengan subdatos. Son ideales cuando se requiere flexibilidad para guardar datos cuyos atributos sean dinamicos y variables en un mismo formato estandar.
+
+Podemos concluir, entonces, que la implementacion de bases de datos no-relacionales no es tan estandar como lo era SQL, cada una con sus fortalezas y debilidades, donde el cual usar dependera en gran parte de los requerimientos especificos de la aplicacion y el tipo de dato que se guardara.
