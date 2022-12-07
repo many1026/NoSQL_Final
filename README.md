@@ -83,7 +83,10 @@ SELECT teamCity, count(*) as number
 #### Importacion
 
 ```Cypher
+//Drop everything in the data base
 match (n) detach delete n
+
+//Creating nodes
 
 //Create players
 LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/many1026/NoSQL_Final/main/nbaDEF.csv" AS row
@@ -91,14 +94,24 @@ CREATE (n:Player)
 SET n = row
 
 //Create Teams (note: click overview, then node name and select teamCity property)
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/many1026/NoSQL_Final/main/team.csv" AS row
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/many1026/NoSQL_Final/main/team_city.csv" AS row
 CREATE (n:Team)
 SET n = row
 
 //Create Cities (note: click overview, then node name and select teamCity property)
-LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/many1026/NoSQL_Final/main/city.csv" AS row
+LOAD CSV WITH HEADERS FROM "https://raw.githubusercontent.com/many1026/NoSQL_Final/main/city_city.csv" AS row
 CREATE (n:City)
 SET n = row
+
+
+//Creating Relations:
+
+//team-player
+match (p:Player), (t:Team) where p.teamFullName=t.full_name create (p)-[:Plays_In]->(t)
+
+
+//team-city
+match (t:Team), (c:City) where t.city=c.city create (t)-[:Home_Is]->(c)
 ```
 
 #### Queries
