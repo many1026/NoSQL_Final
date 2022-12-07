@@ -118,16 +118,18 @@ return t.full_name as team_name, count(e) as num_players
 order by num_players descending limit 1
 ```
 ```Cypher
-//¿Cuáles son las 5 ligas más populares (las más grandes)?
-match (p:Player) return p.teamDivision, count(p.teamDivision) as player_per_division order by player_per_division descending limit 5
 ```
 ```Cypher
 ```
 
+```Cypher
+// ¿Cual es el numero de jugadores por ciudad?
+MATCH (p:Player)
+RETURN p.teamName, count(p.teamCity) as n
+ORDER BY n DESC
+```
+
+
 ## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
 
-PURA EXPLICACION
-
-## Conclusion
-
-PURA EXPLICACION
+La diferencia entre monetdb y neo4j almacenan bases de datos radica en la forma en la que almacenan los datos. Las bases de datos columnares guardan los datos en columnas relacionadas, mientras que en las bases de datos graficas los datos se almacenan en nodos y aristas, que representan las entidades y relaciones de la base de datos. Esto significa que las bases de datos columnares sirven para datos que son almacenados en columnas, como hojas de calculo, mientras que las bases de datos graficas sirven para datos cuyas relaciones son de extrema importancia, como las redes.
