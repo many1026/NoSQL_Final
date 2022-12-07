@@ -35,7 +35,7 @@ db.nba.find({"data.team.division": {$in:["Southeast"]}},{"data.data":1,"data.tea
 Regresa los nombres y id de los jugadores que juegan en la posición PointGuard o que juegan en la conferencia Este
 ```
 db.nba.find({$or:[{"data.position":"G"},{$and:[{"data.conference":{$ne:["East"]}}]}]},{"data.first_name":1, "data.id":1})
-
+```
 
 ## monetdb
 #### Objetivo Base Columnar
