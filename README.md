@@ -19,15 +19,11 @@ collection.insert_many(response[0])
 ```
 
 ## Mongodb
+Al recibir los datos desde la api, nos dimos cuenta que, todos los datos estaban contenidos dentro de un arreglo data, lo cual fue un problema ya que al intentar hacer distintas llamadas tuvimos que llamar primero a data y despues los distintos atributos de nuestros dos objetos principales (players y team)
 
-#### Importacion desde API
 
 #### Queries
 
-#### Transformacion a csv
-
-
-#### Codigo
 
 ## monetdb
 #### Objetivo Base Columnar
