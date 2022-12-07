@@ -25,12 +25,12 @@ Al recibir los datos desde la api, nos dimos cuenta que, todos los datos estaban
 #### Queries
 Regresa los nombres de los jugadores que su nombre termina con 'ael'
 ```
-db.nba.find({"data.first_name":/ael$/},{"data.data":1,"data.first_name":1})
+db.nba.find({"data.first_name":/ael$/},{"data.first_name":1})
 ```
-Regresa los nombres de los equipos que son parte de la conferencia sureste
+Regresa los nombres de los equipos que son parte de la división sureste
 
 ```
-db.nba.find({"data.team.division": {$in:["Southeast"]}},{"data.data":1,"data.team.full_name":1})
+db.nba.find({"data.team.division": {$in:["Southeast"]}},{"data.team.full_name":1})
 ```
 Regresa los nombres y id de los jugadores que juegan en la posición PointGuard o que juegan en la conferencia Este
 ```
