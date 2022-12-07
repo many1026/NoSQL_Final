@@ -23,8 +23,19 @@ Al recibir los datos desde la api, nos dimos cuenta que, todos los datos estaban
 
 
 #### Queries
+Regresa los nombres de los jugadores que su nombre termina con 'ael'
+```
+db.nba.find({"data.first_name":/ael$/},{"data.data":1,"data.first_name":1})
+```
+Regresa los nombres de los equipos que son parte de la conferencia sureste
 
-
+```
+db.nba.find({"data.team.division": {$in:["Southeast"]}},{"data.data":1,"data.team.full_name":1})
+```
+Regresa los nombres y id de los jugadores que juegan en la posición PointGuard o que juegan en la conferencia Este
+```
+db.nba.find({$or:[{"data.position":"G"},{$and:[{"data.conference":{$ne:["East"]}}]}]},{"data.first_name":1, "data.id":1})
+```
 ## monetdb
 #### Objetivo Base Columnar
 El objetivo de esta base de datos columnar es poder facilitar la lectura, la vista, y búsqueda de la información que creímos más pertinente de la API que descargamos. Nosotros escogimos la API de los jugadores de la NBA. Sucesivamente, escogimos ciertos atributos cómo el ID del jugador, su nombre completo, el ID del equipo, el nombre del equipo, la conferencia en la que juegan, la división, y la ciudad. La razón es porque queremos mostrar en la BigTable una visualización sencilla para poder encontrar la información básica del jugador y que visualmente alguien que no sepa nada, pueda encontrar muy fácilmente las especificaciones más importantes del jugador. Finalmente, para lograrlo se tuvo que exportar toda la información a monetdb  usando csv con los comandos:
