@@ -112,6 +112,7 @@ match (t:Team), (c:City) where t.city=c.city create (t)-[:Home_Is]->(c)
 
 #### Queries
 ```Cypher
+//¿Cuál es el equipo con más jugadores?
 match (p:Player)-[e:Plays_In]->(t:Team)
 return t.full_name as team_name, count(e) as num_players
 order by num_players descending limit 1
