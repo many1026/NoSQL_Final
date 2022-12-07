@@ -118,7 +118,7 @@ return t.full_name as team_name, count(e) as num_players
 order by num_players descending limit 1
 ```
 ```Cypher
-¿Cuáles son las 5 ligas más populares (las más grandes)?
+//¿Cuáles son las 5 ligas más populares (las más grandes)?
 match (p:Player) return p.teamDivision, count(p.teamDivision) as player_per_division order by player_per_division descending limit 5
 ```
 ```Cypher
