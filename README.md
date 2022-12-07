@@ -111,11 +111,14 @@ match (t:Team), (c:City) where t.city=c.city create (t)-[:Home_Is]->(c)
 ```
 
 #### Queries
-```SQL
+```Cypher
+match (p:Player)-[e:Plays_In]->(t:Team)
+return t.full_name as team_name, count(e) as num_players
+order by num_players descending limit 1
 ```
-```SQL
+```Cypher
 ```
-```SQL
+```Cypher
 ```
 
 ## Comparacion entre Columnar (monetdb) vs Grafica (neo4j)
