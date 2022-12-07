@@ -1,5 +1,4 @@
 # NoSQL_Final
-# Proyecto Final
 
 ## API
 
